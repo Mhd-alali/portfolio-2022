@@ -8,8 +8,8 @@ const outerMaterial = new THREE.ShaderMaterial({
      fragmentShader,
      uniforms: {
          uTime: { value: 0.0 },
-         uRandom: { value: Math.random() * 20 },
-         uWhite: { value: 30 }
+         uRandom: { value: (Math.random() - .5) * 2. * Math.PI },
+         uWhite: { value: 0 }
      },
  })
 const sphere = new THREE.Mesh(geometry, outerMaterial)

@@ -9,6 +9,7 @@ body,html{
 html {
   overflow: scroll;
   overflow-x: hidden;
+  font-family:'Helvetica Neue', sans-serif;
 }
 ::-webkit-scrollbar {
   width: 0;  /* Remove scrollbar space */
@@ -46,8 +47,8 @@ canvas{
 }
 h1{
   color: hsl(0, 0%, 90%);
-  font-size: clamp(2.3rem,7vw,10rem);
-  font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: clamp(3rem,7vw,10rem);
+  font-family:'Helvetica Neue', sans-serif;
   position: absolute;
   left: 50%;
   top: 40%;

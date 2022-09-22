@@ -2,7 +2,6 @@ import * as THREE from 'three'
 import gsap from 'gsap';
 import sphere  from './sphere/sphere';
 
-
 const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 let camera = null
@@ -53,7 +52,6 @@ export function initExperience() {
     renderer.setSize(innerWidth, innerHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 }
-
 
 const clock = new THREE.Clock()
 export const update = () => {

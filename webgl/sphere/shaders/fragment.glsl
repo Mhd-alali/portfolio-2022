@@ -106,12 +106,12 @@ void main() {
     vec3 color2 = vec3(5.0 +abs( sin(uTime * .5) * 20.)) / 255.;
     vec3 color3 = vec3(1) / 255.;
 
-    float strength = cnoise(vPosition + uTime * .1);
+    float noise = cnoise(vPosition + (uTime * .1) + uRandom);
 
-    vec2 baseUv = rotate(vPosition.xy,strength * uRandom) * .5;
+    vec2 baseUv = rotate(vPosition.xy,uRandom * noise) * .5;
 
-    float basePaterns = line(baseUv.x * strength * 5.,.1);
-    float secondPaterns = line(baseUv.x * strength * 5.,.7);
+    float basePaterns = line(baseUv.x * noise * 5.,.1);
+    float secondPaterns = line(baseUv.x * noise * 5.,.7);
 
     vec3 baseColor = mix(color3,color2,basePaterns);
     vec3 color = mix(baseColor,color1,secondPaterns);
