@@ -1,15 +1,16 @@
 import gsap from "gsap";
-import {initExperience,update} from "./webgl";
 
 // to prevent rendering for mobile phones
 const renderWebGL = innerWidth > 500
 if (renderWebGL) {
+    //TODO: fire this on resize
+    var { initExperience, update } = await import("./webgl");
     initExperience()
 }
 
 const scollArea = document.querySelector('.scrool-area')
 
-const tick = ()=>{
+const tick = () => {
     if (renderWebGL) {
         update()
     }
