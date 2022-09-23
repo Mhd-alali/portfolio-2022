@@ -21,6 +21,7 @@ html {
 }
 body{
   background-color: rgb(10, 10, 10);
+  /* background-color: rgb(230, 230, 230); */
 }
 ::selection{
   background-color: white;
@@ -38,8 +39,20 @@ canvas{
   height: 100%;
   top: 0;
   left: 0;
-  mix-blend-mode: difference;
   background-color: transparent;
+  z-index: -1;
+}
+.wrapper{
+  position: fixed;
+  margin: 1.5rem;
+  border: 1px solid white;
+  height: calc(100vh  - 3rem);
+  width: calc(100vw  -  3rem);
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  outline: 10rem solid black;
 }
 .hero{
   position: relative;

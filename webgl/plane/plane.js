@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import vertexShader from './shaders/vertex.glsl'
 import fragmentShader from './shaders/fragment.glsl'
 
-const geometry = new THREE.IcosahedronGeometry(.9, 32, 32);
+const geometry = new THREE.PlaneGeometry(10,10);
 const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
@@ -13,6 +13,6 @@ const material = new THREE.ShaderMaterial({
     },
 })
 
-const sphere = new THREE.Mesh(geometry, material)
+const plane = new THREE.Mesh(geometry, material)
 
-export default sphere
+export default plane

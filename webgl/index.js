@@ -1,9 +1,11 @@
 import * as THREE from 'three'
 import gsap from 'gsap';
 import sphere  from './sphere/sphere';
+import plane  from './plane/plane';
 
 const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
+
 let camera = null
 let renderer = null
 
@@ -42,8 +44,7 @@ export function initExperience() {
     /**
      * adding all the objects
      */
-    scene.add(camera)
-    scene.add(sphere)
+    scene.add(camera,sphere,plane)
 
     /**
      * Renderer
@@ -57,6 +58,7 @@ const clock = new THREE.Clock()
 export const update = () => {
     const elapsedTime = clock.getElapsedTime()
     sphere.material.uniforms.uTime.value = elapsedTime;
+    plane.material.uniforms.uTime.value = elapsedTime;
     gsap.to(canvas, { y: -scrollY })
     renderer.render(scene, camera)
 }
