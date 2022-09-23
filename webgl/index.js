@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import gsap from 'gsap';
 import sphere  from './sphere/sphere';
 import plane  from './plane/plane';
+import useIntersectionObserver from '../animation/intersectionObserver'
 
 const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
@@ -34,11 +35,22 @@ export function initExperience() {
         gsap.to(sphere.rotation, { y })
         gsap.to(sphere.rotation, { x })
     })
+    useIntersectionObserver({element:document.querySelector("h1"),threshold:.3},
+    ()=>{
+        gsap.to(sphere.scale, {x:1,y:1,z:1,ease:"power2.inOut",duration:1})
+        gsap.to(sphere.position, {x:0,y:0,z:0,ease:"power2.inOut",duration:1})
+    },
+    ()=>{
+        const {width} = document.querySelector(".wrapper").getBoundingClientRect()
+        gsap.to(sphere.scale, {x:.2,y:.2,z:.2,ease:"power2.inOut",duration:1,})
+        gsap.to(sphere.position, {duration:1,x:-innerWidth / width - .1,duration:1,ease:"power2.inOut"})
+    }
+    )
 
     /**
      * camera set
      */
-    camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 100)
+    camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 0.1, 100)
     camera.position.z = 2
 
     /**
@@ -59,6 +71,6 @@ export const update = () => {
     const elapsedTime = clock.getElapsedTime()
     sphere.material.uniforms.uTime.value = elapsedTime;
     plane.material.uniforms.uTime.value = elapsedTime;
-    gsap.to(canvas, { y: -scrollY })
+    gsap.to([camera.position,sphere.position], { y: -scrollY / innerHeight })
     renderer.render(scene, camera)
 }

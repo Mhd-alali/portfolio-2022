@@ -80,7 +80,7 @@ float line(float direction,float offset){
     return smoothstep(
         0.,
         .5 + offset * .5, 
-        abs(1. * sin(direction * 20.) + offset));
+        abs(1. * sin(direction * 10.) + offset));
 }
 
 vec2 rotate(vec2 v, float a) {
@@ -95,9 +95,7 @@ float rand(vec2 p) {
 				23.14069263277926, // e^pi (Gelfond's constant)
 				2.665144142690225 // 2^sqrt(2) (Gelfond–Schneider constant)
 			);
-			return fract(
-				cos(dot(p, k1)) * 12345.6789
-			);
+			return fract(cos(dot(p, k1)) * 12345.6789);
 		}
 
 void main() {
@@ -106,20 +104,20 @@ void main() {
 
     vec3 color1 = vec3(0) ;
     // the value goes from 10 to 30 and back
-    vec3 color2 = vec3(250) /255.;
-    vec3 color3 = vec3(150) / 255.;
+    vec3 color2 = vec3(255) /255.;
+    vec3 color3 = vec3(255) / 255.;
     // vec3 color1 = vec3(0.) /255.;
     // // the value goes from 10 to 30 and back
     // vec3 color2 = vec3(128,158,113) / 255.;
     // vec3 color3 = vec3(224,148,66) / 255.;
 
 
-    float basePaterns = line(baseUv.x * noise,.5);
-    float secondPaterns = line(baseUv.x * noise,.1);
+    float basePaterns = line(baseUv.x * noise * 4.,.5);
+    float secondPaterns = line(baseUv.x * noise * 4.,.1);
 
     vec3 baseColor = mix(color3,color2,basePaterns);
     vec3 color = mix(baseColor,color1,secondPaterns);
     baseUv *= rand(baseUv);
-    color.rgb *= (rand(baseUv) * .3);
+    color.rgb *= rand(baseUv) * .3;
     gl_FragColor = vec4(color , 1.);
 }

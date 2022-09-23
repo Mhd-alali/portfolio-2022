@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import vertexShader from './shaders/vertex.glsl'
 import fragmentShader from './shaders/fragment.glsl'
 
-const geometry = new THREE.IcosahedronGeometry(.9, 32, 32);
+const geometry = new THREE.IcosahedronGeometry(.45, 32, 32);
 const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
