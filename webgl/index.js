@@ -28,7 +28,7 @@ export function initExperience() {
         renderer.setSize(innerWidth, innerHeight)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
-
+    
     window.addEventListener('mousemove', (args) => {
         const x = ((args.clientY / innerHeight - .5))
         const y = ((args.clientX / innerWidth - .5))
@@ -41,9 +41,8 @@ export function initExperience() {
         gsap.to(sphere.position, {x:0,y:0,z:0,ease:"power2.inOut",duration:1})
     },
     ()=>{
-        const {width} = document.querySelector(".wrapper").getBoundingClientRect()
         gsap.to(sphere.scale, {x:.2,y:.2,z:.2,ease:"power2.inOut",duration:1,})
-        gsap.to(sphere.position, {duration:1,x:-innerWidth / width - .1,duration:1,ease:"power2.inOut"})
+        gsap.to(sphere.position, {y:.45,ease:"power2.inOut",duration:1,})
     }
     )
 
@@ -71,6 +70,5 @@ export const update = () => {
     const elapsedTime = clock.getElapsedTime()
     sphere.material.uniforms.uTime.value = elapsedTime;
     plane.material.uniforms.uTime.value = elapsedTime;
-    gsap.to([camera.position,sphere.position], { y: -scrollY / innerHeight })
     renderer.render(scene, camera)
 }
