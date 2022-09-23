@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import sphere  from './sphere/sphere';
 import plane  from './plane/plane';
 import useIntersectionObserver from '../animation/intersectionObserver'
-
 const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 

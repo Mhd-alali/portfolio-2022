@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import './style.scss'
 
 // to prevent rendering for mobile phones
 const renderWebGL = innerWidth > 500
