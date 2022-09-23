@@ -14,5 +14,5 @@ const material = new THREE.ShaderMaterial({
 })
 
 const sphere = new THREE.Mesh(geometry, material)
-
+sphere.position.y = - 0.075
 export default sphere

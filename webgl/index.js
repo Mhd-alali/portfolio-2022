@@ -37,11 +37,12 @@ export function initExperience() {
     useIntersectionObserver({element:document.querySelector("h1"),threshold:.3},
     ()=>{
         gsap.to(sphere.scale, {x:1,y:1,z:1,ease:"power2.inOut",duration:1})
-        gsap.to(sphere.position, {x:0,y:0,z:0,ease:"power2.inOut",duration:1})
+        gsap.to(sphere.position, {x:0,y:-.075,z:0,ease:"power2.inOut",duration:1})
     },
     ()=>{
-        gsap.to(sphere.scale, {x:.2,y:.2,z:.2,ease:"power2.inOut",duration:1,})
-        gsap.to(sphere.position, {y:.45,ease:"power2.inOut",duration:1,})
+        const y = innerHeight > 900 ?0.04:0
+        gsap.to(sphere.scale, {x:.1,y:.1,z:.1,ease:"power2.inOut",duration:1,})
+        gsap.to(sphere.position, {y:y+.5,ease:"power2.inOut",duration:1,})
     }
     )
 
