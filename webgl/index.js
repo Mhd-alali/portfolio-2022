@@ -22,8 +22,8 @@ export function initExperience() {
     })
     
     window.addEventListener('mousemove', (args) => {
-        const x = ((args.clientY / innerHeight - .5))
-        const y = ((args.clientX / innerWidth - .5)) * innerWidth / innerHeight
+        const x = ((args.clientY / innerHeight - .5)) * innerWidth / innerHeight
+        const y = ((args.clientX / innerWidth - .5))
         gsap.to(sphere.rotation, { y })
         gsap.to(sphere.rotation, { x })
     })
