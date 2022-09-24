@@ -118,6 +118,6 @@ void main() {
     vec3 baseColor = mix(color3,color2,basePaterns);
     vec3 color = mix(baseColor,color1,secondPaterns);
     baseUv *= rand(baseUv);
-    color.rgb *= rand(baseUv) * .3;
+    color.rgb *= rand(baseUv) * uWhite;
     gl_FragColor = vec4(color , 1.);
 }

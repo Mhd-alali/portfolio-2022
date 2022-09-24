@@ -1,0 +1,18 @@
+@mixin flex ($items:center,$justify:space-evenly,$direction:row){
+    display: flex;
+    align-items: $items;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@mixin spaceX($space) {
+    > * + * {
+        margin-left: $space;
+    }
+}
+
+@mixin spaceY($space) {
+    > * + * {
+        margin-top: $space;
+    }
+}

@@ -1,3 +1,4 @@
+@use '../abstract/variables' as *;
 html {
   overflow: scroll;
   overflow-x: hidden;
@@ -9,12 +10,9 @@ html {
   background: transparent; /* Optional: just make scrollbar invisible */
 }
 body {
-  background-color: rgb(10, 10, 10);
+  background-color: $dark;
+  user-select: none;
   /* background-color: rgb(230, 230, 230); */
-}
-::selection {
-  background-color: white;
-  color: rgb(10, 10, 10);
 }
 canvas {
   position: fixed;
@@ -30,11 +28,13 @@ canvas {
   left: 0;
   background-color: transparent;
   z-index: -2;
+  display: flow-root;
+  will-change: transform;
 }
 .wrapper {
   position: fixed;
   margin: 1.5rem;
-  border: 1px solid white;
+  border: 1px solid $light;
   height: calc(100vh - 3rem);
   width: calc(100vw - 3rem);
   top: 0;

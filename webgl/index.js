@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import gsap from 'gsap';
 import sphere  from './sphere/sphere';
 import plane  from './plane/plane';
-import useIntersectionObserver from '../animation/intersectionObserver'
+import {useIntersectionObserver} from '../animation'
 const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
@@ -14,13 +14,6 @@ export function initExperience() {
      * Event Handlers
      */
     window.addEventListener('resize', () => {
-        if (innerWidth < 425) {
-            sphere.scale.set(.8, .8, .8)
-        }
-        else {
-            sphere.scale.set(1, 1, 1)
-        }
-
         camera.aspect = innerWidth / innerHeight
         camera.updateProjectionMatrix()
 
@@ -30,7 +23,7 @@ export function initExperience() {
     
     window.addEventListener('mousemove', (args) => {
         const x = ((args.clientY / innerHeight - .5))
-        const y = ((args.clientX / innerWidth - .5))
+        const y = ((args.clientX / innerWidth - .5)) * innerWidth / innerHeight
         gsap.to(sphere.rotation, { y })
         gsap.to(sphere.rotation, { x })
     })
@@ -38,11 +31,13 @@ export function initExperience() {
     ()=>{
         gsap.to(sphere.scale, {x:1,y:1,z:1,ease:"power2.inOut",duration:1})
         gsap.to(sphere.position, {x:0,y:-.075,z:0,ease:"power2.inOut",duration:1})
+        gsap.to(sphere.material.uniforms.uWhite, {value:0.3,duration:1,ease:"power2.inOut"})
     },
     ()=>{
         const y = innerHeight > 900 ?0.04:0
         gsap.to(sphere.scale, {x:.1,y:.1,z:.1,ease:"power2.inOut",duration:1,})
         gsap.to(sphere.position, {y:y+.5,ease:"power2.inOut",duration:1,})
+        gsap.to(sphere.material.uniforms.uWhite, {value:.75,duration:1,ease:"power2.inOut"})
     }
     )
 

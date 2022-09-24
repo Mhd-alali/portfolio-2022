@@ -1,8 +1,9 @@
 import './index.scss'
+import { lerp } from './animation'
 const scollArea = document.querySelector('.scrool-area')
+let update = () => { }
 
 // to prevent rendering for mobile phones
-let update = () => { }
 const renderWebGL = innerWidth > 500
 const Load = async () => {
     if (renderWebGL) {
@@ -13,9 +14,10 @@ const Load = async () => {
 }
 Load()
 
-const lerp = (start, end, t) => {
-    return start * (1 - t) + end * t
-}
+document.querySelector('nav span').addEventListener("click",()=>{
+    document.querySelector('nav ul').classList.toggle("hide")
+})
+
 let current = 0
 const tick = () => {
     if (renderWebGL) {

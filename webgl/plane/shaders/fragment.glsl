@@ -81,7 +81,7 @@ float line(float direction,float offset){
     return smoothstep(
         0.,
         .5 + offset * .5, 
-        abs(1. * sin(direction * 10.) + offset));
+        abs(1. * sin(direction * 5.) + offset));
 }
 
 vec2 rotate(vec2 v, float a) {
