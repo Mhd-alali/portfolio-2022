@@ -7,19 +7,22 @@
     <link rel="stylesheet" href="index.css">
     <title>Vite App</title>
   </head>
-  <body class="bg-black text-white">
+  <body class="bg-black text-white h-[300vh]">
     <canvas class="webgl"></canvas>
-    <div class="fixed border border-white w-screen h-screen">`
-      <div class="scrool-area">
-      <nav>
-        <span></span>
-        <ul>
+    <div class="fixed z-10 m-8 sm:border sm:border-white container outline-double outline-[10rem] outline-black">
+      <div class="scrool-area container fixed -z-10">
+      <nav class="w-full ">
+        <button class="toggler fixed">
+          <span before=" " class="bg-white fixed w-8 h-[2px] right-1 top-0"></span>
+          <span before=" " class="bg-white fixed w-6 h-[2px] right-1 top-2"></span>
+        </button>
+        <ul class="flex flex-col items-center space-y-6 visible h-40 hide-nav sm:visible">
           <li>PROJECTS</li>
           <li>ABOUT</li>
           <li>CONTACT</li>
         </ul>
       </nav>
-        <div class="hero">
+        <div class="section">
           <h1>
             <span>CREATIVE</span>
             <span>FRONT-END</span>

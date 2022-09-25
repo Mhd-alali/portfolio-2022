@@ -13,9 +13,10 @@ const Load = async () => {
 }
 Load()
 
-// document.querySelector('nav span').addEventListener("click",()=>{
-//     document.querySelector('nav ul').classList.toggle("hide")
-// })
+document.querySelector('.toggler').addEventListener("click",()=>{
+    const navList = document.querySelector('nav ul')
+    navList.classList.toggle('hide-nav')
+})
 
 let current = 0
 const tick = () => {

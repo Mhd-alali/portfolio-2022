@@ -8,6 +8,20 @@
     box-sizing: border-box;
     user-select: none;
 }
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible*/
+}
+.container{
+    @apply w-[calc(100vw-4rem)] h-[calc(100vh-4rem)] ;
+}
+.hide-nav{
+    @apply invisible h-0;
+}
 canvas{
     position: fixed;
     z-index: -1;
