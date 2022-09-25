@@ -1,4 +1,4 @@
-import './index.scss'
+import './index.css'
 import { lerp } from './animation'
 const scollArea = document.querySelector('.scrool-area')
 let update = () => { }
