@@ -1,4 +1,3 @@
-import './index.css'
 import { lerp } from './animation'
 const scollArea = document.querySelector('.scrool-area')
 let update = () => { }
@@ -14,9 +13,9 @@ const Load = async () => {
 }
 Load()
 
-document.querySelector('nav span').addEventListener("click",()=>{
-    document.querySelector('nav ul').classList.toggle("hide")
-})
+// document.querySelector('nav span').addEventListener("click",()=>{
+//     document.querySelector('nav ul').classList.toggle("hide")
+// })
 
 let current = 0
 const tick = () => {
