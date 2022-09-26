@@ -110,7 +110,7 @@ void main() {
     vec3 color2 = vec3(150) /255.;
     vec3 color3 = vec3(50) / 255.;
 
-    float basePaterns = line(baseUv.y,.15);
+    float basePaterns = line(baseUv.y,.1);
     float secondPaterns = line(baseUv.y,.1);
 
     vec3 baseColor = mix(color3,color2,basePaterns);

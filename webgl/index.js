@@ -16,16 +16,15 @@ export function initExperience() {
         gsap.to(sphere.rotation, { y })
         gsap.to(sphere.rotation, { x })
     })
-    useIntersectionObserver({ element: document.querySelector(".hero"), threshold: .4 },
+    useIntersectionObserver({ element: document.querySelector(".hero"), threshold: .3 },
         () => {
             gsap.to(sphere.scale, { x: 1, y: 1, z: 1, ease: "power2.inOut", duration: 1 })
             gsap.to(sphere.position, { x: 0, y: -.075, z: 0, ease: "power2.inOut", duration: 1 })
             gsap.to(sphere.material.uniforms.uWhite, { value: 0.3, duration: 1, ease: "power2.inOut" })
         },
         () => {
-            const y = innerHeight > 900 ? 0.04 : 0
             gsap.to(sphere.scale, { x: .1, y: .1, z: .1, ease: "power2.inOut", duration: 1, })
-            gsap.to(sphere.position, { y: y + .5, ease: "power2.inOut", duration: 1, })
+            gsap.to(sphere.position, { y:.5 , ease: "power2.inOut", duration: 1, })
             gsap.to(sphere.material.uniforms.uWhite, { value: .75, duration: 1, ease: "power2.inOut" })
         }
     )

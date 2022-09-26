@@ -35,6 +35,9 @@ document.querySelector('.toggler').addEventListener("click", () => {
         open = true
     }
 })
+document.querySelector('.scroll').addEventListener("click", () => {
+    window.scrollBy({top:innerHeight *.85})
+})
 
 addEventListener("resize", ()=>{
     resize()
