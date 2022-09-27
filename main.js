@@ -30,10 +30,12 @@ document.querySelector('.toggler').addEventListener("click", () => {
     if (open) {
         gsap.to(navList, { duration: .5, autoAlpha: 0, ease: "power2.inOut" })
         gsap.to(navList, { duration: .5, height: '0rem', ease: "power2.inOut", delay: .4 })
+        gsap.to(scollArea, { paddingTop:"24rem" })
         open = false
     } else {
         gsap.to(navList, { duration: .5, height: 'auto', ease: "power2.inOut" })
         gsap.to(navList, { duration: .5, autoAlpha: 1, ease: "power2.inOut", delay: .4 })
+        gsap.to(scollArea, { paddingTop:"40rem" })
         open = true
     }
 })
