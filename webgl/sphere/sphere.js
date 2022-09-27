@@ -1,6 +1,6 @@
 import * as THREE from 'three'
-import vertexShader from './shaders/vertex.glsl'
-import fragmentShader from './shaders/fragment.glsl'
+import vertexShader from '../vertex.glsl'
+import fragmentShader from './fragment.glsl'
 import { Vector2 } from 'three';
 
 const geometry = new THREE.IcosahedronGeometry(1, 32, 32);
@@ -11,7 +11,7 @@ const material = new THREE.ShaderMaterial({
         uTime: { value: 0.0 },
         uRandom: { value: (Math.random() - .5) * 2. * Math.PI },
         uWhite: { value: 0.4 },
-        uDark: { value: true },
+        uDark: { value: 0. },
         uResolution:{value: new Vector2(innerWidth,innerHeight)}
     },
 })

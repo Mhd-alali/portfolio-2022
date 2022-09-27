@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import gsap from 'gsap';
 import sphere from './sphere/sphere';
 import plane from './plane/plane';
+import image from './image/image';
 import { useIntersectionObserver } from '../animation'
 const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
@@ -40,7 +41,7 @@ export function initExperience() {
     /**
      * adding all the objects
      */
-    scene.add(camera, sphere, plane)
+    scene.add(camera, sphere, plane,image)
 
     /**
      * Renderer
@@ -57,6 +58,7 @@ export const update = () => {
     plane.material.uniforms.uTime.value = elapsedTime;
     renderer.render(scene, camera)
 }
+
 export const resize = () => {
     camera.aspect = innerWidth / innerHeight
     camera.fov = 2.*Math.atan((innerHeight/2)/600) * (180/Math.PI)

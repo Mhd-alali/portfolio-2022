@@ -1,6 +1,6 @@
 uniform vec2 uResolution;
 uniform float uTime;
-uniform bool uDark;
+uniform float uDark;
 varying vec2 vUv;
 
 const int AMOUNT = 4;
@@ -179,9 +179,6 @@ void main() {
   float grainSize = 1.1;
   float g = grain(vUv, uResolution / grainSize);
   vec3 color = vec3(sin(len + g));
-  if(uDark) {
-    gl_FragColor = vec4(color * .5, 1.);
-  } else {
-    gl_FragColor = vec4(1.-color *.5, 1.);
-  }
+
+  gl_FragColor = mix(vec4(color * .4, 1.),vec4(1.-color *.5, 1.),uDark);
 }

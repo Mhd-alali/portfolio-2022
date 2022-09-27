@@ -47,14 +47,14 @@ const dark = document.querySelector(".dark-toggler")
 const light = document.querySelector(".light-toggler")
 dark.addEventListener("click",()=>{
     document.documentElement.classList.add("dark")
-    plane.material.uniforms.uDark.value = true
-    sphere.material.uniforms.uDark.value = true
+    gsap.to(sphere.material.uniforms.uDark,{value:0.,duration:.75})
+    gsap.to(plane.material.uniforms.uDark,{value:0.,duration:.75})
     isDark = true
 })
 light.addEventListener("click",()=>{
     document.documentElement.classList.remove("dark")
-    plane.material.uniforms.uDark.value = false
-    sphere.material.uniforms.uDark.value = false
+    gsap.to(sphere.material.uniforms.uDark,{value:1.,duration:.75})
+    gsap.to(plane.material.uniforms.uDark,{value:1.,duration:.75})
     isDark = false
 })
 
@@ -64,6 +64,7 @@ document.querySelector('.scroll').addEventListener("click", () => {
 
 addEventListener("resize", ()=>{
     resize()
+    document.body.style.height = `${scrollArea.getBoundingClientRect().height}px`
 })
 
 let current = 0
