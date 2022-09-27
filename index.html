@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,9 +7,22 @@
     <link rel="stylesheet" href="index.css" />
     <title>Vite App</title>
   </head>
-  <body class="bg-black text-white h-[300vh]">
+  <body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-gray-200 h-[300vh]">
     <canvas class="webgl"></canvas>
-    <div class="fixed z-10 m-8 sm:border sm:border-gray-400 wrapper outline-double outline-[10rem] outline-black">
+    <!-- theme togglers -->
+    <div class="fixed bottom-[3.3rem] invisible sm:visible z-20 -left-[1rem] flex flex-col gap-16">
+      <div class="theme-btn dark-toggler bottom-20 ">
+        DARK
+        <span class="box bg-white dark:bg-black border-black dark:border-white"></span>
+      </div>
+      <div class="theme-btn light-toggler bottom-40 -left-[3px]">
+        LIGHT
+        <span class="box bg-black dark:bg-white border-white dark:border-black"></span>
+      </div>
+    </div>
+    <!-- main page ouline -->
+    <div class="fixed z-10 m-8 sm:border dark:sm:border-gray-400 sm:border-neutral-900 wrapper outline outline-[10rem] outline-gray-200 dark:outline-black">
+      <!-- navigation -->
       <nav class="flex fixed w-[calc(100vw-4rem)] items-center my-24 flex-col gap-20 sm:my-0 sm:flex-row sm:justify-between p-8">
         <button class="toggler fixed sm:invisible">
           <span class="bg-white fixed w-[35px] h-[2px] right-2 top-24"></span>
@@ -17,12 +30,13 @@
         </button>
         <h1 class="text-7xl font-display sm:text-xl place-self-start sm:place-self-center">MUHAMMADALALI</h1>
         <ul class="flex flex-col items-center text-5xl space-y-20 sm:text-base sm:visible sm:flex-row sm:space-y-0 sm:justify-end sm:space-x-8 ">
-          <li class="cursor-pointer"><a href="#">HOME</a></li>
-          <li class="cursor-pointer"><a href="#">ABOUT</a></li>
-          <li class="cursor-pointer"><a href="#">CONTACT</a></li>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">CONTACT</a></li>
         </ul>
       </nav>
-      <div class="scrool-area wrapper fixed -z-10 p-8 ">
+      <!-- main page -->
+      <main class="scrool-area wrapper fixed -z-10 p-8 ">
         <!-- hero -->
         <section class="hero min-h-[calc(100vh-13rem)] relative">
           <h2 class="text-9xl sm:text-8xl w-min whitespace-nowrap mt-20 text-left child:block child:overflow-hidden">
@@ -35,9 +49,9 @@
         </section>
         <!-- i dont know yet -->
         <section class="projects min-h-[calc(100vh-4rem)]">
-
+          
         </section>
-      </div>
+      </main>
     </div>
     <script defer type="module" src="/main.js"></script>
   </body>

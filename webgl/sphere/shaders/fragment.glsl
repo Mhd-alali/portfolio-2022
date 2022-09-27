@@ -1,6 +1,7 @@
 uniform float uTime;
 uniform float uRandom;
 uniform float uWhite;
+uniform bool uDark;
 
 varying vec3 vPosition;
 
@@ -119,5 +120,9 @@ void main() {
     vec3 color = mix(baseColor,color1,secondPaterns);
     baseUv *= rand(baseUv);
     color.rgb *= rand(baseUv) * uWhite;
-    gl_FragColor = vec4(color , 1.);
+    if(uDark) {
+      gl_FragColor = vec4(color , 1.);
+    }else{
+      gl_FragColor = vec4(.9-color , 1.);
+    }
 }

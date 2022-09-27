@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Playfair+Display:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,12 +10,20 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 html {
     overflow: scroll;
     overflow-x: hidden;
     
     font-size: 1vw;
+    scrollbar-width: none;
+}
+html > *{
+    transition: color .5s;
+}
+.outline{
+    transition: outline .5s;
 }
 /* @media screen and (min-width:650px) {
     html{
@@ -24,6 +32,12 @@ html {
 ::-webkit-scrollbar {
     width: 0;
     background: transparent;
+}
+.theme-btn{
+    @apply -rotate-90 flex flex-row-reverse gap-2 items-center;
+}
+.box{
+    @apply block w-4 h-4 border;
 }
 .wrapper{
     @apply w-[calc(100vw-4rem)] h-[calc(100vh-4rem)] ;

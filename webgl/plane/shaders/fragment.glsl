@@ -1,8 +1,7 @@
 uniform float uTime;
 uniform float uRandom;
-uniform float uWhite;
+uniform bool uDark;
 
-varying vec3 vPosition;
 varying vec2 vUv;
 
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
@@ -103,10 +102,9 @@ float rand(vec2 p) {
 
 void main() {
     float noise = cnoise(vec3(vUv,(uTime * .1) + uRandom));
-    vec2 baseUv = rotate(vUv,0.2 + abs(noise) * .5) - uTime * 0.02 + uRandom;
+    vec2 baseUv = rotate(vUv,0.2 + abs(noise) * .5) - uTime * 0.05 + uRandom;
 
     vec3 color1 = vec3(0) ;
-    // the value goes from 10 to 30 and back
     vec3 color2 = vec3(150) /255.;
     vec3 color3 = vec3(50) / 255.;
 
@@ -117,5 +115,9 @@ void main() {
     vec3 color = mix(baseColor,color1,secondPaterns);
     baseUv *= rand(baseUv);
     color.rgb *= rand(baseUv) * .5;
-    gl_FragColor = vec4(color, 1.);
+    if(uDark) {
+      gl_FragColor = vec4(color + .05, 1.);
+    }else{
+      gl_FragColor = vec4(.8 - color - .05, 1.);
+    }
 }

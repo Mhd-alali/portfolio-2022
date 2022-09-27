@@ -1,5 +1,7 @@
 import gsap from 'gsap'
 import { lerp } from './animation'
+import plane from './webgl/plane/plane'
+import sphere from './webgl/sphere/sphere'
 const scollArea = document.querySelector('.scrool-area')
 
 let update = () => { }
@@ -35,6 +37,23 @@ document.querySelector('.toggler').addEventListener("click", () => {
         open = true
     }
 })
+//theme toggle
+let isDark = true
+const dark = document.querySelector(".dark-toggler")
+const light = document.querySelector(".light-toggler")
+dark.addEventListener("click",()=>{
+    document.documentElement.classList.add("dark")
+    plane.material.uniforms.uDark.value = true
+    sphere.material.uniforms.uDark.value = true
+    isDark = true
+})
+light.addEventListener("click",()=>{
+    document.documentElement.classList.remove("dark")
+    plane.material.uniforms.uDark.value = false
+    sphere.material.uniforms.uDark.value = false
+    isDark = false
+})
+
 document.querySelector('.scroll').addEventListener("click", () => {
     window.scrollBy({top:innerHeight *.85})
 })
