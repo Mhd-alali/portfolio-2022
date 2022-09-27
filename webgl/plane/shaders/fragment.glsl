@@ -80,7 +80,7 @@ float line(float direction,float offset){
     return smoothstep(
         0.,
         .5 + offset * .5, 
-        abs(1. * sin(direction * 5.) + offset));
+        abs(1. * sin(direction * 2.) + offset));
 }
 
 vec2 rotate(vec2 v, float a) {
@@ -102,13 +102,13 @@ float rand(vec2 p) {
 
 void main() {
     float noise = cnoise(vec3(vUv,(uTime * .1) + uRandom));
-    vec2 baseUv = rotate(vUv,0.2 + abs(noise) * .5) - uTime * 0.05 + uRandom;
+    vec2 baseUv = rotate(vUv,0.2 + abs(noise) * .5) - uTime * 0.15 + uRandom;
 
     vec3 color1 = vec3(0) ;
     vec3 color2 = vec3(150) /255.;
     vec3 color3 = vec3(50) / 255.;
 
-    float basePaterns = line(baseUv.y,.1);
+    float basePaterns = line(baseUv.y,.5);
     float secondPaterns = line(baseUv.y,.1);
 
     vec3 baseColor = mix(color3,color2,basePaterns);

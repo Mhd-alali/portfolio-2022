@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="index.css" />
     <title>Vite App</title>
   </head>
-  <body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-gray-200 h-[300vh]">
+  <body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-gray-200">
     <canvas class="webgl"></canvas>
     <!-- theme togglers -->
-    <div class="fixed bottom-[3.3rem] invisible sm:visible z-20 -left-[1rem] flex flex-col gap-16">
+    <div class="fixed text-sm bottom-[3.3rem] invisible sm:visible z-20 -left-4 flex flex-col gap-16">
       <div class="theme-btn dark-toggler bottom-20 ">
         DARK
         <span class="box bg-white dark:bg-black border-black dark:border-white"></span>
@@ -36,7 +36,7 @@
         </ul>
       </nav>
       <!-- main page -->
-      <main class="scrool-area wrapper fixed -z-10 p-8 pt-96 sm:pt-8">
+      <main class="scrool-area w-[calc(100vw-4rem)] fixed -z-10 p-8 pt-96 sm:pt-8">
         <!-- hero -->
         <section class="hero min-h-[calc(100vh-13rem)] relative">
           <h2 class="text-9xl sm:text-8xl w-min whitespace-nowrap mt-20 text-left child:block child:overflow-hidden">
@@ -48,8 +48,13 @@
           <p class="scroll cursor-pointer text-5xl sm:text-lg absolute bottom-5">scroll down</p>
         </section>
         <!-- i dont know yet -->
-        <section class="projects min-h-[calc(100vh-4rem)]">
-          
+        <section class="projects min-h-[calc(100vh-4rem)] mt-56">
+          <ul class="flex flex-col">
+            <li class="project-item">playground</li>
+            <li class="project-item">inteo</li>
+            <li class="project-item">weather app</li>
+            <li class="project-item">yummy in the tummy</li>
+          </ul>
         </section>
       </main>
     </div>

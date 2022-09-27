@@ -2,7 +2,9 @@ import gsap from 'gsap'
 import { lerp } from './animation'
 import plane from './webgl/plane/plane'
 import sphere from './webgl/sphere/sphere'
-const scollArea = document.querySelector('.scrool-area')
+const scrollArea = document.querySelector('.scrool-area')
+
+document.body.style.height = `${scrollArea.getBoundingClientRect().height}px`
 
 let update = () => { }
 let resize = () => { }
@@ -30,12 +32,12 @@ document.querySelector('.toggler').addEventListener("click", () => {
     if (open) {
         gsap.to(navList, { duration: .5, autoAlpha: 0, ease: "power2.inOut" })
         gsap.to(navList, { duration: .5, height: '0rem', ease: "power2.inOut", delay: .4 })
-        gsap.to(scollArea, { paddingTop:"24rem" })
+        gsap.to(scrollArea, { paddingTop:"24rem" })
         open = false
     } else {
         gsap.to(navList, { duration: .5, height: 'auto', ease: "power2.inOut" })
         gsap.to(navList, { duration: .5, autoAlpha: 1, ease: "power2.inOut", delay: .4 })
-        gsap.to(scollArea, { paddingTop:"40rem" })
+        gsap.to(scrollArea, { paddingTop:"40rem" })
         open = true
     }
 })
@@ -66,11 +68,9 @@ addEventListener("resize", ()=>{
 
 let current = 0
 const tick = () => {
-    if (renderWebgl) {
-        update()
-    }
+    if (renderWebgl) update()
     current = lerp(current, -scrollY, .1)
-    scollArea.style.transform = `translate3d(0,${current}px,0)`
+    scrollArea.style.transform = `translate3d(0,${current}px,0)`
     requestAnimationFrame(tick)
 }
 tick()
