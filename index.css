@@ -49,7 +49,7 @@ html > *{
     @apply w-full h-96 sm:h-32 border-b border-black dark:border-white uppercase text-7xl sm:text-3xl flex items-center ;
 }
 .projects li{
-    transition: opacity 0.3s;
+    transition: opacity 0.5s;
 }
 .projects li:hover{
     opacity: 1 !important;

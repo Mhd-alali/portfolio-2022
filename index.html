@@ -30,15 +30,16 @@
         </button>
         <h1 class="text-7xl font-display sm:text-xl place-self-start sm:place-self-center">MUHAMMADALALI</h1>
         <ul class="flex flex-col items-center text-5xl space-y-20 sm:text-base sm:visible sm:flex-row sm:space-y-0 sm:justify-end sm:space-x-8 ">
-          <li><a href="#">HOME</a></li>
-          <li><a href="#">ABOUT</a></li>
-          <li><a href="#">CONTACT</a></li>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#projects">PROJECTS</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#contact">CONTACT</a></li>
         </ul>
       </nav>
       <!-- main page -->
       <main class="scrool-area w-[calc(100vw-4rem)] fixed -z-10 p-8 pt-96 sm:pt-8">
         <!-- hero -->
-        <section class="hero min-h-[calc(100vh-13rem)] relative">
+        <section id="home" class="hero min-h-[calc(70vh)] sm:min-h-[calc(100vh-13rem)] relative">
           <h2 class="text-9xl sm:text-8xl w-min whitespace-nowrap mt-20 text-left child:block child:overflow-hidden">
             <span>CREATIVE</span>
             <span>FRONT-END</span>
@@ -47,15 +48,29 @@
           <p class="text-6xl font-display sm:text-xl mt-10">welcome to my 2022 portfolio</p>
           <p class="scroll cursor-pointer text-5xl sm:text-lg absolute bottom-5">scroll down</p>
         </section>
-        <!-- i dont know yet -->
-        <section class="projects min-h-[calc(100vh-4rem)] my-56">
-          <h3 class="font-display text-8xl sm:text-5xl">PROJECTS</h3>
+        
+        <!-- projects -->
+        <section id="projects" class="projects min-h-[calc(100vh-4rem)] my-56">
+          <h4 class="font-display text-8xl sm:text-5xl">PROJECTS</h4>
           <ul class="flex flex-col mt-20">
             <li class="project-item">playground</li>
             <li class="project-item">inteo</li>
             <li class="project-item">weather app</li>
             <li class="project-item">yummy in the tummy</li>
           </ul>
+        </section>
+
+        <section id="about" class="projects min-h-[calc(100vh-4rem)] my-20 space-y-10">
+          <h3 class="text-9xl sm:text-7xl"><span class="font-display">Hey!</span> im Muhammed E. Ali</h3>
+          <p class="text-6xl space-y-5 sm:text-3xl child:block">
+           <span>im a twenty years old <span class="font-bold">IT</span> student</span>
+           <span>in Cordoba private university.</span>
+           <span>a creative developer based in North East Syria</span>
+        </p>
+        </section>
+
+        <section id="contact">
+
         </section>
       </main>
     </div>

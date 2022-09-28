@@ -43,6 +43,29 @@ document.querySelector('.toggler').addEventListener("click", () => {
         open = true
     }
 })
+
+/**
+ * page navigation
+ */
+
+const homeLink = document.querySelector('a[href="#home"]')
+const projectsLink = document.querySelector('a[href="#projects"]')
+const aboutLink = document.querySelector('a[href="#about"]')
+const contactLink = document.querySelector('a[href="#contact"]')
+
+homeLink.addEventListener('click',()=>{
+    scrollTo({top:0})
+})
+projectsLink.addEventListener('click',()=>{
+    scrollTo({top:document.querySelector('#projects').getBoundingClientRect().top})
+})
+aboutLink.addEventListener('click',()=>{
+    scrollTo({top:document.querySelector('#about').getBoundingClientRect().top})
+})
+contactLink.addEventListener('click',()=>{
+    scrollTo({top:document.querySelector('#contact').getBoundingClientRect().top})
+})
+
 //theme toggle
 const dark = document.querySelector(".dark-toggler")
 const light = document.querySelector(".light-toggler")
