@@ -3,9 +3,10 @@ import gsap from 'gsap';
 import sphere from './sphere/sphere';
 import plane from './plane/plane';
 import image from './image/image';
-import { useIntersectionObserver } from '../animation'
-const canvas = document.querySelector('canvas.webgl')
-const scene = new THREE.Scene()
+import { useIntersectionObserver,lerp } from '../animation';
+
+const canvas = document.querySelector('canvas.webgl');
+const scene = new THREE.Scene();
 
 let camera = null
 let renderer = null
@@ -14,8 +15,8 @@ export function initExperience() {
     window.addEventListener('mousemove', (args) => {
         const x = ((args.clientY / innerHeight - .5))
         const y = ((args.clientX / innerWidth - .5))
-        gsap.to(sphere.rotation, { y ,delay:.05})
-        gsap.to(sphere.rotation, { x ,delay:.05})
+        gsap.to(sphere.rotation, { y })
+        gsap.to(sphere.rotation, { x })
     })
     useIntersectionObserver({ element: document.querySelector(".hero"), threshold: .7},
         () => {
@@ -51,14 +52,61 @@ export function initExperience() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 }
 
+/**
+ * mouse move
+ */
+let target = {x:0,y:0}
+export const mousemove = (eve)=>{
+    target.x = eve.clientX
+    target.y = eve.clientY
+}
+
+/**
+ * update
+ */
+
+const projectList = document.querySelector(".projects ul");
+const projects = [...document.querySelectorAll(".projects ul li")];
+let linksHover = false
+projectList.addEventListener('mouseenter', () => {
+    linksHover = true
+})
+projectList.addEventListener('mouseleave', () => {
+    linksHover = false
+})
 const clock = new THREE.Clock()
+let offsetX = 0
+let offsetY = 0
 export const update = () => {
     const elapsedTime = clock.getElapsedTime()
     sphere.material.uniforms.uTime.value = elapsedTime;
     plane.material.uniforms.uTime.value = elapsedTime;
+    if (linksHover) {
+        gsap.to(image.material.uniforms.uAlpha, {value : 1.})
+    }else{
+        gsap.to(image.material.uniforms.uAlpha, {value : 0.})
+    }
+
+    offsetX = lerp(offsetX,target.x,0.1)
+    offsetY = lerp(offsetY,target.y,0.1)
+    image.material.uniforms.uOffset.value.set((target.x - offsetX) * 0.0005,- (target.y - offsetY) * 0.0005)
+    image.position.set(offsetX - (innerWidth / 2)  , -offsetY + (innerHeight / 2), 0);
+
+    for (let i = 0; i < projects.length; i++) {
+        if (linksHover) {
+            projects[i].style.opacity = 0.2
+        }else{
+            projects[i].style.opacity = 1
+        }
+    }
+
     renderer.render(scene, camera)
 }
 
+
+/**
+ * resize
+ */
 export const resize = () => {
     camera.aspect = innerWidth / innerHeight
     camera.fov = 2.*Math.atan((innerHeight/2)/600) * (180/Math.PI)

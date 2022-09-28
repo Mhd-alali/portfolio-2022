@@ -46,7 +46,13 @@ html > *{
     @apply min-h-[calc(100vh-4rem)];
 }
 .project-item{
-    @apply w-full h-96 sm:h-40 border-b border-black dark:border-white uppercase text-7xl sm:text-4xl flex items-center ;
+    @apply w-full h-96 sm:h-32 border-b border-black dark:border-white uppercase text-7xl sm:text-3xl flex items-center ;
+}
+.projects li{
+    transition: opacity 0.3s;
+}
+.projects li:hover{
+    opacity: 1 !important;
 }
 canvas{
     position: fixed;

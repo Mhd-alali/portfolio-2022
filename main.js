@@ -8,6 +8,7 @@ document.body.style.height = `${scrollArea.getBoundingClientRect().height}px`
 
 let update = () => { }
 let resize = () => { }
+let mousemove = () => { }
 const renderWebgl = innerWidth > 500
 
 // to prevent rendering for mobile phones
@@ -17,6 +18,7 @@ const Load = async () => {
         module.initExperience()
         update = module.update
         resize = module.resize
+        mousemove = module.mousemove
     }
 }
 Load()
@@ -32,39 +34,53 @@ document.querySelector('.toggler').addEventListener("click", () => {
     if (open) {
         gsap.to(navList, { duration: .5, autoAlpha: 0, ease: "power2.inOut" })
         gsap.to(navList, { duration: .5, height: '0rem', ease: "power2.inOut", delay: .4 })
-        gsap.to(scrollArea, { paddingTop:"24rem" })
+        gsap.to(scrollArea, { paddingTop: "24rem" })
         open = false
     } else {
         gsap.to(navList, { duration: .5, height: 'auto', ease: "power2.inOut" })
         gsap.to(navList, { duration: .5, autoAlpha: 1, ease: "power2.inOut", delay: .4 })
-        gsap.to(scrollArea, { paddingTop:"40rem" })
+        gsap.to(scrollArea, { paddingTop: "40rem" })
         open = true
     }
 })
 //theme toggle
-let isDark = true
 const dark = document.querySelector(".dark-toggler")
 const light = document.querySelector(".light-toggler")
-dark.addEventListener("click",()=>{
-    document.documentElement.classList.add("dark")
-    gsap.to(sphere.material.uniforms.uDark,{value:0.,duration:.75})
-    gsap.to(plane.material.uniforms.uDark,{value:0.,duration:.75})
-    isDark = true
+const toggleTheme = (theme) => {
+    switch (theme) {
+        case "dark":
+            document.documentElement.classList.add("dark")
+            gsap.to(sphere.material.uniforms.uDark, { value: 0., duration: .75 })
+            gsap.to(plane.material.uniforms.uDark, { value: 0., duration: .75 })
+            break;
+
+        case "light":
+            document.documentElement.classList.remove("dark")
+            gsap.to(sphere.material.uniforms.uDark, { value: 1., duration: .75 })
+            gsap.to(plane.material.uniforms.uDark, { value: 1., duration: .75 })
+            break;
+    }
+}
+
+dark.addEventListener("click", () => {
+    toggleTheme('dark')
 })
-light.addEventListener("click",()=>{
-    document.documentElement.classList.remove("dark")
-    gsap.to(sphere.material.uniforms.uDark,{value:1.,duration:.75})
-    gsap.to(plane.material.uniforms.uDark,{value:1.,duration:.75})
-    isDark = false
+light.addEventListener("click", () => {
+    toggleTheme('light')
 })
 
 document.querySelector('.scroll').addEventListener("click", () => {
-    window.scrollBy({top:innerHeight *.85})
+    window.scrollBy({ top: innerHeight * .85 })
 })
 
-addEventListener("resize", ()=>{
+
+addEventListener("resize", () => {
     resize()
     document.body.style.height = `${scrollArea.getBoundingClientRect().height}px`
+})
+
+addEventListener("mousemove",(eve)=>{
+    mousemove(eve)
 })
 
 let current = 0
