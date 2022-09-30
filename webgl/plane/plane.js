@@ -14,5 +14,6 @@ const material = new THREE.ShaderMaterial({
 })
 const plane = new THREE.Mesh(geometry, material)
 plane.scale.set(innerWidth,innerHeight,0)
+plane.position.z = -2
 
 export default plane

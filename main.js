@@ -2,7 +2,16 @@ import gsap from 'gsap'
 import { lerp } from './animation'
 import plane from './webgl/plane/plane'
 import sphere from './webgl/sphere/sphere'
+import Stats from 'stats.js'
+
 const scrollArea = document.querySelector('.scrool-area')
+
+/**
+ * stats 
+ */
+ var stats = new Stats();
+ document.body.appendChild( stats.dom );
+//--------------------------
 
 document.body.style.height = `${scrollArea.getBoundingClientRect().height}px`
 
@@ -57,13 +66,13 @@ homeLink.addEventListener('click',()=>{
     scrollTo({top:0})
 })
 projectsLink.addEventListener('click',()=>{
-    scrollTo({top:document.querySelector('#projects').getBoundingClientRect().top})
+    scrollTo({top:innerHeight})
 })
 aboutLink.addEventListener('click',()=>{
-    scrollTo({top:document.querySelector('#about').getBoundingClientRect().top})
+    scrollTo({top:innerHeight * 2})
 })
 contactLink.addEventListener('click',()=>{
-    scrollTo({top:document.querySelector('#contact').getBoundingClientRect().top})
+    scrollTo({top:innerHeight * 3})
 })
 
 //theme toggle
@@ -108,9 +117,11 @@ addEventListener("mousemove",(eve)=>{
 
 let current = 0
 const tick = () => {
+    stats.begin()
     if (renderWebgl) update()
     current = lerp(current, -scrollY, .1)
     scrollArea.style.transform = `translate3d(0,${current}px,0)`
+    stats.end()
     requestAnimationFrame(tick)
 }
 tick()
